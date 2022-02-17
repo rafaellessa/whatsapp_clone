@@ -11,6 +11,7 @@ services:
       ports:
           - "${WHATSAPP_API_PORT:-3001}:${WHATSAPP_API_PORT:-3001}"
           - "9230:9229"
+      command: npx prisma migrate dev
       logging:
           driver: "json-file"
           options:
