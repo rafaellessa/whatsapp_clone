@@ -9,13 +9,13 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module'
   },
   plugins: [
     '@typescript-eslint'
   ],
   rules: {
-    "eslint-disable camelcase": 0
+    'eslint-disable camelcase': 0
   }
 }
