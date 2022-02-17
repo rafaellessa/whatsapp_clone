@@ -1,5 +1,5 @@
-import { AddAcount, AddAccountModel } from '../../core/usecases/add-account'
-import { EmailValidator } from '../protocols/email-validator'
+import { AddAcount, AddAccountModel } from '../../../core/usecases/add-account'
+import { EmailValidator } from '../../protocols/email-validator'
 
 export class AddAccountStub implements AddAcount {
   handle (account: AddAccountModel): AddAccountModel {
