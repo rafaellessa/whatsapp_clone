@@ -1,3 +1,5 @@
 whatsapp-api/code/node_modules
+whatsapp-api/code/coverage
 whatsapp-api/code/yarn.lock
+whatsapp-api/code/package-lock.json
 .env
