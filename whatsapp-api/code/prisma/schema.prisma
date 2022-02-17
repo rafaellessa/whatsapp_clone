@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id           Int            @id @default(autoincrement())
+  content      String
+  author       User           @relation(fields: [author_id], references: [id])
+  author_id    Int
+  MessageTalk  MessageTalk[]
+  MessageGroup MessageGroup[]
+}
+
+model Talk {
+  id          Int           @id @default(autoincrement())
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @updatedAt
+  MessageTalk MessageTalk[]
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  name     String
+  email    String    @unique
+  password String
+  messages Message[]
+}
+
+model Group {
+  id           Int            @id @default(autoincrement())
+  name         String
+  createdAt    DateTime       @default(now())
+  MessageGroup MessageGroup[]
+}
+
+model MessageTalk {
+  message    Message @relation(fields: [message_id], references: [id])
+  message_id Int
+  talk       Talk    @relation(fields: [talk_id], references: [id])
+  talk_id    Int
+
+  @@id([message_id, talk_id])
+}
+
+model MessageGroup {
+  message    Message @relation(fields: [message_id], references: [id])
+  message_id Int
+  group      Group   @relation(fields: [group_id], references: [id])
+  group_id   Int
+
+  @@id([message_id, group_id])
+}
